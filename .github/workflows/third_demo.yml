@@ -1,7 +1,7 @@
 name: Third Demo Workflow Challenge
 on: [push, workflow_dispatch]
 jobs:
-  test:
+  build-test-lint:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -20,7 +20,7 @@ jobs:
         run: npm run lint
         working-directory: ./third-demo
   deploy:
-    needs: test
+    needs: build-test-lint
     runs-on: ubuntu-latest
     steps:
       - name: Get code

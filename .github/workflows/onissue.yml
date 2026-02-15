@@ -1,0 +1,8 @@
+name: Trigger on Issue Creation
+on: issues
+jobs:
+  issue-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Issue Information
+        run: echo "Issue #${{ github.event.issue.number }} created by ${{ github.event.issue.user.login }}. And then all the issues information: ${{ toJSON(github.event.issue) }}"

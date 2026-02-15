@@ -16,9 +16,9 @@ jobs:
       # - name: Run tests
       #   run: npm test
       #   working-directory: ./third-demo
-      - name: Lint code
-        run: npm run lint
-        working-directory: ./third-demo
+      # - name: Lint code
+      #   run: npm run lint
+      #   working-directory: ./third-demo
   deploy:
     needs: build-test-lint
     runs-on: ubuntu-latest

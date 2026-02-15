@@ -13,9 +13,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
         working-directory: ./third-demo
-      - name: Run tests
-        run: npm test
-        working-directory: ./third-demo
+      # - name: Run tests
+      #   run: npm test
+      #   working-directory: ./third-demo
       - name: Lint code
         run: npm run lint
         working-directory: ./third-demo

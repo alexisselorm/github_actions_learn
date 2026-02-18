@@ -1,5 +1,7 @@
 name: Third Demo Workflow Challenge
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches: [develop]
 jobs:
   build-test-lint:
     runs-on: ubuntu-latest

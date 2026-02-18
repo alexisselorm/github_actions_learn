@@ -2,6 +2,9 @@ name: Third Demo Workflow Challenge
 on:
   push:
     branches: [develop]
+  pull_request:
+    types: [opened, edited]
+
 jobs:
   build-test-lint:
     runs-on: ubuntu-latest

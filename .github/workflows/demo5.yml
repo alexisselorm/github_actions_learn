@@ -1,4 +1,4 @@
-name: Deploy website
+name: Deploy website - Demo 5
 on:
   push:
     branches:
@@ -11,10 +11,13 @@ jobs:
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm ci
+        working-directory: ./fifth-demo
       - name: Lint code
         run: npm run lint
+        working-directory: ./fifth-demo
       - name: Test code
         run: npm run test
+        working-directory: ./fifth-demo
   build:
     needs: test
     runs-on: ubuntu-latest

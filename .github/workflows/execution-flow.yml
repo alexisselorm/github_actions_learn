@@ -1,4 +1,4 @@
-name: Website Deployment - Check for fail errors
+name: Website Deployment - Check for fail errors. Using Reusable Workflow
 on:
   push:
     branches:

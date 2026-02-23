@@ -1,4 +1,4 @@
-name: Matrix Demo
+name: Matrix Demo - Use reusable workflow to deploy
 on: push
 jobs:
   build:
@@ -26,3 +26,6 @@ jobs:
         with:
           path: ~/.npm
           key: npm-deps-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+  deploy:
+    needs: build
+    uses: ./.github/workflows/reusable.yml

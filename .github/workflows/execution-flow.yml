@@ -38,7 +38,7 @@ jobs:
         id: test
         working-directory: ./conditional-workflow-demo-project
       - name: Upload test report
-        if: ${{ steps.test.outcome == 'success' }}
+        if: ${{ failure() && steps.test.outcome == 'failure' }}
         uses: actions/upload-artifact@v4
         with:
           name: test-report
@@ -72,7 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dist-files
       - name: Output contents

@@ -1,4 +1,4 @@
-name: Website Deployment
+name: Website Deployment - Check for fail errors
 on:
   push:
     branches:
@@ -17,9 +17,11 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
+        working-directory: ./conditional-workflow-demo-project
         run: npm ci
       - name: Lint code
         run: npm run lint
+        working-directory: ./conditional-workflow-demo-project
   test:
     runs-on: ubuntu-latest
     steps:
@@ -36,6 +38,7 @@ jobs:
         run: npm ci
         working-directory: ./conditional-workflow-demo-project
       - name: Test code
+        continue-on-error: true
         run: npm run test
         id: test
         working-directory: ./conditional-workflow-demo-project

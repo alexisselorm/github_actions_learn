@@ -29,3 +29,11 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/reusable.yml
+    secrets:
+      some-secret: Somesecret will be here
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print deploy output
+        run: echo "${{needs.deploy.outputs.result}}"

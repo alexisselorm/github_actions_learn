@@ -12,3 +12,5 @@ jobs:
         run: echo "Bye world"
       - name: Load and cache dependencies
         uses: ./.github/actions/cached-deps
+        with:
+          working-directory: ./deploy-via-docker

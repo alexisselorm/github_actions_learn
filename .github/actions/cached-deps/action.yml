@@ -1,5 +1,10 @@
 name: Get and Cache Dependencies
 description: Get the dependencies and cache them for later use in other workflows
+inputs:
+  working-directory:
+    description: The working directory where package-lock.json is located
+    required: false
+    default: .
 runs:
   using: "composite"
   steps:
@@ -7,8 +12,9 @@ runs:
       uses: actions/cache@v3
       with:
         path: ~/.npm
-        key: ${{ env.CACHE_KEY }}-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ env.CACHE_KEY }}-${{ hashFiles(format('{0}/**/package-lock.json', inputs.working-directory)) }}
     - name: Install dependencies
       if: steps.cache-deps.outputs.cache-hit != 'true'
       run: npm ci
       shell: bash
+      working-directory: ${{ inputs.working-directory }}

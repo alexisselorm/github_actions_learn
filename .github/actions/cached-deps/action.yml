@@ -3,8 +3,6 @@ description: Get the dependencies and cache them for later use in other workflow
 runs:
   using: "composite"
   steps:
-    - name: Get code
-      uses: actions/checkout@v3
     - name: Cache dependencies
       uses: actions/cache@v3
       with:

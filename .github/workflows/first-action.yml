@@ -8,3 +8,5 @@ jobs:
         run: echo "Hello world!"
       - name: Goodbye
         run: echo "Bye world"
+      - name: Load and cache dependencies
+        uses: ./.github/actions/cached-deps

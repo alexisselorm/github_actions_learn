@@ -29,6 +29,8 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/reusable.yml
+    with:
+      artifact-name: dist-files
     secrets:
       some-secret: Somesecret will be here
   print-deploy-result:
